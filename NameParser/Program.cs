@@ -1,4 +1,5 @@
 ﻿using System;
+using NameParser.Names;
 
 namespace NameParser
 {
@@ -6,49 +7,19 @@ namespace NameParser
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter Your First Name");
-            var firstName = Console.ReadLine();
+            var firstName = new FirstName();
+            firstName.GetName();
+            firstName.PrintName();
 
-            foreach (var letter in firstName)
-            {
-                Console.WriteLine(letter);
-            }
+            var lastName = new LastName();
+            lastName.GetName();
+            lastName.PrintName();
 
-            Console.WriteLine("Enter Your Last Name");
-            var lastName = Console.ReadLine();
-            var lastNameWithSpaces = "";
+            var middleName = new MiddleName();
+            middleName.GetName(firstName.Name);
+            middleName.PrintName();
 
-            foreach (var letter in lastName.ToUpper())
-            {
-                lastNameWithSpaces += letter + " ";
-            }
-
-            Console.WriteLine(lastNameWithSpaces.Trim());
-
-            Console.WriteLine("Do You Have a Middle Name? (y/n)");
-            var hasMiddleName = Console.ReadLine();
-            var middleName = "";
-
-            if (hasMiddleName == "y")
-            {
-                Console.WriteLine("What is your Middle Name?");
-                middleName = Console.ReadLine();
-                var i = 0; 
-
-                foreach(var letter in middleName)
-                {
-                    Console.WriteLine(letter.ToString().PadLeft(++i));
-                }
-            }
-            else
-            {
-                Console.WriteLine($@" {firstName}, You are dumb.
-
-
-                    And no one likes you.");
-            }
-
-            Console.WriteLine($"Goodbye {firstName} {middleName} {lastName}. Press Enter to Exist.");
+            Console.WriteLine($"Goodbye {firstName.Name} {middleName.Name} {lastName.Name}. Press Enter to Exist.");
             Console.ReadLine();
         }
     }
