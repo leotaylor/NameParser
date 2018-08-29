@@ -9,7 +9,7 @@ namespace NameParser.Names
         public FirstName() : base("first")
         {}
 
-        public void PrintName()
+        public override void PrintName()
         {
             foreach (var letter in Name)
             {

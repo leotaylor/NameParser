@@ -11,16 +11,15 @@ namespace NameParser
             var lastName = new LastName();
             var middleName = new MiddleName(firstName);
 
-            firstName.GetName();
-            firstName.PrintName();
+            var names = new NameBase[] { firstName, lastName, middleName };
 
-            lastName.GetName();
-            lastName.PrintName();
+            foreach(var name in names)
+            {
+                name.GetName();
+                name.PrintName();
+            }
 
-            middleName.GetName();
-            middleName.PrintName();
-
-            Console.WriteLine($"Goodbye {firstName.Name} {middleName.Name} {lastName.Name}. Press Enter to Exist.");
+            Console.WriteLine($"Goodbye {firstName.Name} {middleName.Name} {lastName.Name}. Press Enter to Exit.");
             Console.ReadLine();
         }
     }

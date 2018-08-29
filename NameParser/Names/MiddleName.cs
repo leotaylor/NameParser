@@ -4,19 +4,17 @@ using System.Text;
 
 namespace NameParser.Names
 {
-    class MiddleName
+    class MiddleName : NameBase
     {
-        private readonly FirstName _firstName;
+        FirstName _firstName;
 
-        public string Name { get; private set; } = "";
-
-        public MiddleName(FirstName firstName)
+        public MiddleName(FirstName firstName) : base("middle")
         {
             Name = "";
             _firstName = firstName;
         }
 
-        bool ConfirmMiddleName()
+        bool UserHasMiddleName()
         {
             Console.WriteLine("Do You Have a Middle Name? (y/n)");
             var hasMiddleName = Console.ReadLine();
@@ -24,20 +22,19 @@ namespace NameParser.Names
             return hasMiddleName == "y";
         }
 
-        public void GetName()
+        public override void GetName()
         {
-            if (ConfirmMiddleName())
+            if (UserHasMiddleName())
             {
-                Console.WriteLine("What is your Middle Name?");
-                Name = Console.ReadLine();
+                base.GetName();
             }
             else
             {
-                Console.WriteLine($@" {_firstName}, that's fine.");
+                Console.WriteLine($@" {_firstName.Name}, that's fine.");
             }
         }
 
-        public void PrintName()
+        public override void PrintName()
         {
             var i = 0;
 
