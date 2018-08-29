@@ -8,18 +8,18 @@ namespace NameParser
         static void Main(string[] args)
         {
             var firstName = new FirstName();
-            firstName.GetName();
-            firstName.PrintName();
-
             var lastName = new LastName();
-            lastName.GetName();
-            lastName.PrintName();
+            var middleName = new MiddleName(firstName);
 
-            var middleName = new MiddleName();
-            middleName.GetName(firstName.Name);
-            middleName.PrintName();
+            var names = new NameBase[] { firstName, lastName, middleName };
 
-            Console.WriteLine($"Goodbye {firstName.Name} {middleName.Name} {lastName.Name}. Press Enter to Exist.");
+            foreach(var name in names)
+            {
+                name.GetName();
+                name.PrintName();
+            }
+
+            Console.WriteLine($"Goodbye {firstName.Name} {middleName.Name} {lastName.Name}. Press Enter to Exit.");
             Console.ReadLine();
         }
     }
