@@ -6,7 +6,15 @@ namespace NameParser.Names
 {
     class MiddleName
     {
+        private readonly FirstName _firstName;
+
         public string Name { get; private set; } = "";
+
+        public MiddleName(FirstName firstName)
+        {
+            Name = "";
+            _firstName = firstName;
+        }
 
         bool ConfirmMiddleName()
         {
@@ -16,7 +24,7 @@ namespace NameParser.Names
             return hasMiddleName == "y";
         }
 
-        public void GetName(string firstName)
+        public void GetName()
         {
             if (ConfirmMiddleName())
             {
@@ -25,7 +33,7 @@ namespace NameParser.Names
             }
             else
             {
-                Console.WriteLine($@" {firstName}, that's fine.");
+                Console.WriteLine($@" {_firstName}, that's fine.");
             }
         }
 
